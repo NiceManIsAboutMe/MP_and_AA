@@ -6,7 +6,7 @@ void Graph::add_vertex(int vertex) {
     }
 }
 
-void Graph::add_arc(int start_vertex, int end_vertex,int weight) {
+void Graph::add_edge(int start_vertex, int end_vertex,int weight) {
 	if (weight)
 	{
 		add_vertex(start_vertex);
@@ -85,6 +85,11 @@ map <int,int> Graph::Bell_Ford(int start)
 //возвращает вектор с путем до заданной вершины
 map <int, int> Graph::Bell_Ford(int start,int end,vector <int> &a)
 {
+	if (start == end)
+	{
+		a.push_back(start);
+		a.push_back(end);
+	}
 	if (!has_vertex(start) || !has_vertex(end) || get_adjacent_vertices(start) == vector<int>() || !path_exists(start,end))
 	{
 		return map <int, int>();
